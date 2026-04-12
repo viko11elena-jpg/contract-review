@@ -1,0 +1,329 @@
+/* === Base === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #F5F0E8;
+  color: #2D2D2D;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+h1, h2, h3 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: normal;
+}
+
+/* === Layout === */
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 48px 24px 32px;
+}
+
+/* === Header === */
+header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.logo {
+  margin-bottom: 12px;
+}
+
+h1 {
+  font-size: 28px;
+  color: #2D2D2D;
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  font-size: 15px;
+  color: #6B5D4F;
+}
+
+.rate-limit-notice {
+  margin-top: 12px;
+  font-size: 13px;
+  color: #6B5D4F;
+}
+
+/* === Upload Zone === */
+.upload-zone {
+  border: 2px dashed #C4B9A8;
+  border-radius: 12px;
+  background: #FAF6F1;
+  padding: 48px 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.upload-zone:hover,
+.upload-zone.dragover {
+  background: #F0E9DD;
+  border-color: #A89880;
+}
+
+.upload-zone p {
+  margin-top: 12px;
+  font-size: 15px;
+  color: #2D2D2D;
+}
+
+.upload-hint {
+  display: block;
+  margin-top: 6px;
+  font-size: 13px;
+  color: #A89880;
+}
+
+/* === File Info === */
+.file-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: #fff;
+  border: 1px solid #E0D6CA;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.file-info #file-name {
+  font-weight: 600;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.file-info #file-size {
+  color: #6B5D4F;
+  white-space: nowrap;
+}
+
+.file-remove {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #A89880;
+  padding: 0 4px;
+  line-height: 1;
+}
+
+.file-remove:hover {
+  color: #C0392B;
+}
+
+/* === Buttons === */
+.btn-primary {
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  padding: 14px;
+  background: #2D2D2D;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: Georgia, "Times New Roman", serif;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #444;
+}
+
+.btn-primary:disabled {
+  background: #C4B9A8;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  display: block;
+  width: 100%;
+  margin-top: 24px;
+  padding: 12px;
+  background: transparent;
+  color: #2D2D2D;
+  border: 2px solid #2D2D2D;
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: Georgia, "Times New Roman", serif;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-secondary:hover {
+  background: #2D2D2D;
+  color: #fff;
+}
+
+/* === Loading === */
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 16px;
+  border: 3px solid #E0D6CA;
+  border-top-color: #2D2D2D;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+#loading-section {
+  text-align: center;
+  padding: 48px 0;
+}
+
+.loading-text {
+  font-size: 16px;
+  color: #2D2D2D;
+}
+
+.loading-hint {
+  font-size: 13px;
+  color: #A89880;
+  margin-top: 6px;
+}
+
+/* === Results === */
+.summary-bar {
+  padding: 16px;
+  background: #fff;
+  border: 1px solid #E0D6CA;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 15px;
+  color: #2D2D2D;
+  text-align: center;
+}
+
+.risk-card {
+  background: #fff;
+  border: 1px solid #E0D6CA;
+  border-left: 4px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 14px;
+}
+
+.risk-card.high  { border-left-color: #C0392B; }
+.risk-card.medium { border-left-color: #E67E22; }
+.risk-card.low   { border-left-color: #27AE60; }
+
+.risk-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.severity-badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.severity-badge.high {
+  background: #FDEDEC;
+  color: #C0392B;
+}
+
+.severity-badge.medium {
+  background: #FEF5E7;
+  color: #D4880F;
+}
+
+.severity-badge.low {
+  background: #EAFAF1;
+  color: #1E8449;
+}
+
+.clause-text {
+  background: #FAF6F1;
+  border-left: 3px solid #C4B9A8;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  font-style: italic;
+  font-size: 14px;
+  color: #4A3F35;
+  line-height: 1.5;
+}
+
+.risk-number {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #6B5D4F;
+}
+
+.explanation {
+  font-size: 14px;
+  color: #2D2D2D;
+  line-height: 1.6;
+}
+
+.recommendation {
+  font-size: 14px;
+  color: #1E6B3A;
+  line-height: 1.6;
+  margin-top: 10px;
+  padding: 10px 14px;
+  background: #F0F9F2;
+  border-radius: 6px;
+}
+
+/* === No Risks === */
+.no-risks {
+  text-align: center;
+  padding: 32px;
+  color: #27AE60;
+  font-size: 16px;
+}
+
+/* === Error === */
+.error-message {
+  padding: 16px 20px;
+  background: #FDEDEC;
+  border: 1px solid #F5C6CB;
+  border-radius: 8px;
+  color: #922B21;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* === Footer === */
+footer {
+  margin-top: 48px;
+  text-align: center;
+  font-size: 12px;
+  color: #A89880;
+}
+
+.disclaimer {
+  margin-top: 8px;
+  font-size: 11px;
+  color: #B8ADA0;
+  line-height: 1.5;
+}
+
+/* === Utility === */
+.hidden {
+  display: none !important;
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contract Review — AI Risk Analysis</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 2L4 10V20C4 28 10 33.5 18 35C26 33.5 32 28 32 20V10L18 2Z" stroke="#2D2D2D" stroke-width="2" fill="none"/>
+          <rect x="12" y="11" width="12" height="15" rx="1" stroke="#2D2D2D" stroke-width="1.5" fill="none"/>
+          <line x1="14.5" y1="15" x2="21.5" y2="15" stroke="#2D2D2D" stroke-width="1.2"/>
+          <line x1="14.5" y1="18" x2="21.5" y2="18" stroke="#2D2D2D" stroke-width="1.2"/>
+          <line x1="14.5" y1="21" x2="19" y2="21" stroke="#2D2D2D" stroke-width="1.2"/>
+        </svg>
+      </div>
+      <h1>Contract Review</h1>
+      <p class="subtitle">AI-powered contract risk analysis</p>
+      <div id="rate-limit-notice" class="rate-limit-notice"></div>
+    </header>
+
+    <section id="upload-section">
+      <div id="upload-zone" class="upload-zone">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="10" y="6" width="22" height="30" rx="2" stroke="#A89880" stroke-width="2" fill="none"/>
+          <polyline points="26,6 26,14 32,14" stroke="#A89880" stroke-width="2" fill="none"/>
+          <line x1="16" y1="18" x2="28" y2="18" stroke="#A89880" stroke-width="1.5"/>
+          <line x1="16" y1="22" x2="28" y2="22" stroke="#A89880" stroke-width="1.5"/>
+          <line x1="16" y1="26" x2="24" y2="26" stroke="#A89880" stroke-width="1.5"/>
+        </svg>
+        <p>Drag and drop DOCX file here or click to select</p>
+        <span class="upload-hint">Supports .docx files up to 5 MB</span>
+        <input type="file" id="file-input" accept=".docx" hidden>
+      </div>
+      <div id="file-info" class="file-info hidden">
+        <span id="file-name"></span>
+        <span id="file-size"></span>
+        <button id="file-remove" class="file-remove" title="Remove file">&times;</button>
+      </div>
+      <button id="analyze-btn" class="btn-primary" disabled>Review Contract</button>
+    </section>
+
+    <section id="loading-section" class="hidden">
+      <div class="loading-spinner"></div>
+      <p class="loading-text">Analyzing your contract...</p>
+      <p class="loading-hint">This may take 15–30 seconds</p>
+    </section>
+
+    <section id="results-section" class="hidden">
+      <div id="summary-bar" class="summary-bar"></div>
+      <div id="results-container"></div>
+      <button id="new-analysis-btn" class="btn-secondary">Analyze Another Contract</button>
+    </section>
+
+    <section id="error-section" class="hidden">
+      <div class="error-message" id="error-message"></div>
+    </section>
+
+    <footer>
+      <p>Your documents are processed securely and never stored.</p>
+      <p class="disclaimer">This analysis is AI-generated and may not reflect the latest legal changes. This is not legal advice — consult a qualified lawyer for important decisions.</p>
+    </footer>
+  </div>
+
+  <script src="lib/mammoth.browser.min.js"></script>
+  <script src="index.js"></script>
+</body>
+</html>

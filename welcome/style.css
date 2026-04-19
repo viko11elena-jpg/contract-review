@@ -1,0 +1,89 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #F5F0E8;
+  color: #2D2D2D;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 56px 24px 40px;
+  text-align: center;
+}
+
+.logo {
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 32px;
+  font-weight: normal;
+  color: #2D2D2D;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #6B5D4F;
+  margin-bottom: 48px;
+}
+
+.step {
+  background: #fff;
+  border: 1px solid #E0D6CA;
+  border-radius: 12px;
+  padding: 28px;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.instruction {
+  font-size: 16px;
+  color: #2D2D2D;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.step-num {
+  background: #2D2D2D;
+  color: #fff;
+  font-family: Georgia, serif;
+  font-weight: bold;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 16px;
+}
+
+.instruction b {
+  color: #C0392B;
+  font-weight: 700;
+}
+
+.screenshot {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #E0D6CA;
+  display: block;
+}
+
+footer {
+  margin-top: 48px;
+  font-size: 13px;
+  color: #A89880;
+}

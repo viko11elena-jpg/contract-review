@@ -5,7 +5,7 @@ chrome.action.onClicked.addListener(() => {
 chrome.runtime.onInstalled.addListener((details) => {
   if (details.reason === chrome.runtime.OnInstalledReason.INSTALL) {
     chrome.tabs.create({
-      url: 'https://viko11elena-jpg.github.io/contract-review/welcome/',
+      url: 'https://contract-review-ext.netlify.app/',
     });
   }
 });

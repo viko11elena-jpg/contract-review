@@ -1,89 +1,463 @@
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
 body {
-  background: #F5F0E8;
-  color: #2D2D2D;
-  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-  line-height: 1.6;
-  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: #fff;
+  color: #000;
 }
 
 .container {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 56px 24px 40px;
+  max-width: 800px;
+  margin: 16px auto;
+  padding: 0 20px;
   text-align: center;
 }
 
-.logo {
-  margin-bottom: 20px;
-}
-
 h1 {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 32px;
-  font-weight: normal;
-  color: #2D2D2D;
-  margin-bottom: 10px;
-}
-
-.subtitle {
-  font-size: 16px;
-  color: #6B5D4F;
-  margin-bottom: 48px;
-}
-
-.step {
-  background: #fff;
-  border: 1px solid #E0D6CA;
-  border-radius: 12px;
-  padding: 28px;
-  margin-bottom: 24px;
-  text-align: left;
+  font-size: 2em;
+  margin: 0 0 10px;
 }
 
 .instruction {
-  font-size: 16px;
-  color: #2D2D2D;
-  margin-bottom: 20px;
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-}
-
-.step-num {
-  background: #2D2D2D;
-  color: #fff;
-  font-family: Georgia, serif;
-  font-weight: bold;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  font-size: 16px;
+  font-size: 1.15em;
+  margin: 16px 0 12px;
+  text-align: center;
 }
 
 .instruction b {
-  color: #C0392B;
+  color: #c0392b;
   font-weight: 700;
 }
 
-.screenshot {
-  width: 100%;
-  border-radius: 8px;
-  border: 1px solid #E0D6CA;
+/* ===== Mockup container (padding reserves space for badges/arrows) ===== */
+
+.mockup {
+  position: relative;
+  margin: 8px auto;
+  max-width: 760px;
+  padding: 40px 50px 0;
+}
+
+/* ===== Browser frame ===== */
+
+.browser {
+  position: relative;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+}
+
+/* Tab bar */
+
+.tabs {
+  background: #dee1e6;
+  padding: 8px 12px 0;
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 40px;
+}
+
+.tab {
+  background: #fff;
+  border-radius: 10px 10px 0 0;
+  width: 180px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 10px;
+}
+
+.tab-close {
+  color: #5f6368;
+  font-size: 12px;
+}
+
+.tab-new,
+.tab-collapse {
+  color: #5f6368;
+  font-size: 18px;
+  padding: 0 8px;
+  line-height: 32px;
+  align-self: center;
+}
+
+.tab-collapse {
+  margin-left: auto;
+}
+
+/* Toolbar */
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: #fff;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.toolbar-left,
+.toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+.icon-puzzle {
+  width: 24px;
+  height: 24px;
+}
+
+.address-bar {
+  flex: 1;
+  height: 30px;
+  background: #ebeef3;
+  border-radius: 16px;
+}
+
+/* Chrome profile avatar */
+.avatar-svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* Puzzle piece highlighted in step 1 */
+
+.puzzle-wrap {
+  padding: 5px;
+  border-radius: 50%;
+  border: 3.5px solid #c0392b;
+  display: flex;
+}
+
+/* Browser content area */
+
+.browser-content {
+  position: relative;
+  min-height: 380px;
+  background: #fff;
+}
+
+/* ===== Google new-tab page mockup ===== */
+
+.tab-page {
+  padding: 50px 0 40px;
+  text-align: center;
+}
+
+.g-logo {
+  font-family: 'Google Sans', 'Product Sans', 'Arial Rounded MT Bold', 'Segoe UI', Arial, sans-serif;
+  font-weight: 500;
+  font-size: 88px;
+  letter-spacing: -5px;
+  line-height: 1;
+  margin-bottom: 26px;
+}
+
+.g-logo span {
+  font-weight: 500;
+}
+
+.g-search {
+  max-width: 420px;
+  margin: 0 auto;
+  height: 44px;
+  border-radius: 22px;
+  border: 1px solid #dfe1e5;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  gap: 12px;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.g-search-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.g-search-spacer {
+  flex: 1;
+}
+
+.g-mic,
+.g-lens {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+.g-plus {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #e8f0fe;
+  color: #1a73e8;
+  margin: 28px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  line-height: 1;
+}
+
+/* ===== Extensions dropdown ===== */
+
+.ext-dropdown {
+  position: absolute;
+  top: 14px;
+  right: 20px;
+  width: 300px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.18);
+  padding: 14px 0 8px;
+  text-align: left;
+  font-size: 13px;
+  z-index: 1;
+}
+
+.ext-dropdown-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px 10px;
+}
+
+.ext-dropdown-title {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.ext-dropdown-close {
+  color: #5f6368;
+  font-size: 13px;
+}
+
+.ext-section {
+  padding: 2px 16px 8px;
+}
+
+.ext-section-title {
+  font-weight: 600;
+  font-size: 12px;
+  color: #202124;
+  margin-bottom: 4px;
+}
+
+.ext-section-desc {
+  color: #5f6368;
+  font-size: 12px;
+  line-height: 1.35;
+  margin-bottom: 10px;
+}
+
+.ext-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0;
+}
+
+.ext-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.ext-name {
+  flex: 1;
+  font-size: 14px;
+  color: #202124;
+  font-weight: 500;
+}
+
+/* Pin icon highlighted in step 1 */
+
+.pin-wrap {
+  padding: 3px;
+  border-radius: 50%;
+  border: 3px solid #c0392b;
+  display: flex;
+}
+
+.ext-pin {
+  width: 18px;
+  height: 18px;
   display: block;
 }
 
-footer {
-  margin-top: 48px;
+.ext-divider {
+  border-top: 1px solid #e5e7eb;
+  margin: 6px 0;
+}
+
+.ext-manage {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
   font-size: 13px;
-  color: #A89880;
+  color: #202124;
+}
+
+.ext-gear {
+  width: 18px;
+  height: 18px;
+}
+
+/* ===== Pinned icon in toolbar (step 2) ===== */
+
+.pinned-wrap {
+  padding: 2px;
+  border-radius: 50%;
+  border: 3px solid #c0392b;
+  display: flex;
+}
+
+.pinned-icon {
+  width: 22px;
+  height: 22px;
+  display: block;
+  border-radius: 4px;
+}
+
+/* ===== Numbered badges (absolute positioned within .mockup) ===== */
+
+.badge {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 3px solid #c0392b;
+  background: #fff;
+  color: #2d2d2d;
+  font-weight: 700;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  font-family: Georgia, serif;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Step 1: badge 1 above-right of browser, near puzzle icon */
+.badge-1 {
+  top: -5px;
+  right: 120px;
+}
+
+/* Step 1: badge 2 extended past mockup right edge for clear arrow gap */
+.badge-2 {
+  top: 250px;
+  right: -15px;
+}
+
+/* Step 2: badge 3 above-right, near pinned icon */
+.badge-3 {
+  top: -5px;
+  right: 145px;
+}
+
+/* ===== Arrows (absolute positioned within .mockup) ===== */
+
+.arrow {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* arrow 1: tail at badge-1 bottom edge, head at puzzle ring edge */
+.arrow-1 {
+  top: 38px;
+  right: 145px;
+  width: 45px;
+  height: 52px;
+}
+
+/* arrow 2: smooth bottom arc, tail outside badge-2, head at pin ring edge */
+.arrow-2 {
+  top: 264px;
+  right: -15px;
+  width: 110px;
+  height: 22px;
+  z-index: 4;
+}
+
+/* arrow 3: tail at badge-3 bottom edge, head at pinned ring edge */
+.arrow-3 {
+  top: 33px;
+  right: 170px;
+  width: 35px;
+  height: 62px;
+}
+
+/* ===== Mobile ===== */
+
+@media (max-width: 640px) {
+  h1 {
+    font-size: 1.6em;
+  }
+
+  .instruction {
+    font-size: 1em;
+  }
+
+  .mockup {
+    padding: 35px 25px 10px;
+  }
+
+  .tab {
+    width: 100px;
+  }
+
+  .ext-dropdown {
+    width: 240px;
+    right: 10px;
+  }
+
+  .g-logo {
+    font-size: 50px;
+  }
+
+  .g-search {
+    max-width: 320px;
+  }
+
+  .badge {
+    width: 34px;
+    height: 34px;
+    font-size: 17px;
+  }
+
+  .arrow {
+    width: 80px;
+    height: 50px;
+  }
+
+  .badge-1 {
+    right: 80px;
+  }
+
+  .badge-3 {
+    right: 100px;
+  }
 }

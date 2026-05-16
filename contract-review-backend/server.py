@@ -20,11 +20,13 @@ SYSTEM_PROMPT = """You are an expert legal contract analyst. Analyze the provide
 
 IMPORTANT: Respond in the SAME language as the contract text. If the contract is in Russian, respond entirely in Russian. If in English, respond in English. All fields (clause, explanation, recommendation, summary) must be in the same language as the contract.
 
+Identify the TOP 5-7 most important risks only. Do not list more than 7 risks. Prioritize high-severity issues.
+
 For each risk found, provide:
 1. "level": risk severity — "high", "medium", or "low"
-2. "clause": the exact quote from the contract that is problematic (keep it concise, max 2 sentences)
-3. "explanation": a clear explanation of why this is risky
-4. "recommendation": a specific actionable suggestion on what to change or negotiate
+2. "clause": the exact quote from the contract that is problematic (1 sentence max, keep it SHORT)
+3. "explanation": a brief explanation of why this is risky (2-3 sentences max)
+4. "recommendation": a short actionable suggestion (1-2 sentences max)
 
 Focus on these common risk areas:
 - One-sided termination rights
@@ -74,7 +76,7 @@ app.state.limiter = limiter
 async def rate_limit_handler(request: Request, exc: RateLimitExceeded):
     return JSONResponse(
         status_code=429,
-        content={"detail": "Daily limit reached. You can analyze up to 3 contracts per day."},
+        content={"detail": "Daily limit reached. You can analyze up to 2 contracts per day."},
     )
 
 
@@ -86,7 +88,7 @@ client = anthropic.Anthropic()
 
 
 @app.post("/api/analyze")
-@limiter.limit("3/day")
+@limiter.limit("20/day")
 async def analyze(request: Request, body: AnalyzeRequest):
     try:
         message = client.messages.create(
@@ -110,16 +112,30 @@ async def analyze(request: Request, body: AnalyzeRequest):
         try:
             data = json.loads(response_text)
         except json.JSONDecodeError:
-            data = {
-                "risks": [
-                    {
-                        "level": "medium",
-                        "clause": "Unable to parse structured response",
-                        "explanation": response_text[:500],
-                    }
-                ],
-                "summary": "Analysis completed with formatting issues.",
-            }
+            # Try to recover truncated JSON by closing open brackets
+            fixed = response_text
+            # Remove last incomplete object (cut at last complete },)
+            last_complete = fixed.rfind('},')
+            if last_complete > 0:
+                fixed = fixed[:last_complete + 1] + '],"summary":"Analysis may be incomplete."}'
+                try:
+                    data = json.loads(fixed)
+                except json.JSONDecodeError:
+                    data = None
+            else:
+                data = None
+
+            if data is None:
+                data = {
+                    "risks": [
+                        {
+                            "level": "medium",
+                            "clause": "Unable to parse structured response",
+                            "explanation": response_text[:500],
+                        }
+                    ],
+                    "summary": "Analysis completed with formatting issues.",
+                }
 
         return data
 

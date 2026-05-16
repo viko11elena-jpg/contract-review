@@ -1,5 +1,5 @@
 const API_URL = 'http://localhost:8000';
-const DAILY_LIMIT = 3;
+const DAILY_LIMIT = 2;
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5 MB
 
 // DOM elements
@@ -130,7 +130,7 @@ function showError(msg) {
 async function analyzeContract() {
   const used = await getUsageToday();
   if (used >= DAILY_LIMIT) {
-    showError('Daily limit reached. You can analyze up to 3 contracts per day.');
+    showError('Daily limit reached. You can analyze up to 2 contracts per day.');
     return;
   }
 
@@ -144,7 +144,7 @@ async function analyzeContract() {
     });
 
     if (response.status === 429) {
-      showError('Daily limit reached. You can analyze up to 3 contracts per day.');
+      showError('Daily limit reached. You can analyze up to 2 contracts per day.');
       return;
     }
 

@@ -60,7 +60,7 @@ If the contract has no significant risks, return:
 }"""
 
 limiter = Limiter(key_func=get_remote_address)
-app = FastAPI()
+app = FastAPI(docs_url=None, redoc_url=None, openapi_url=None)
 
 app.add_middleware(
     CORSMiddleware,
